@@ -16,3 +16,14 @@ describe "the log searcher" do
   end
 end
 
+describe "the log parser" do
+  it "should know the right path for the log file by default" do
+    config = YAML.load_file(
+      File.expand_path("../../../exmerge/config.yaml", __FILE__))
+    configured_path = config["exmerge_log_path"]
+    @log_parser = LogParser.new
+    @log_parser.path.upcase.should == configured_path.upcase
+  end
+  it "should be able to open the log file"
+  it "should extract the info from the last time ExMerge ran"
+end

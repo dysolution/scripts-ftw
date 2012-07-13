@@ -20,3 +20,20 @@ class LogSearcher
     @log.info "Checking #{target}..."
   end
 end
+
+class LogParser
+  require 'yaml'
+
+  attr_accessor :path
+
+  def initialize
+    read_config
+  end
+
+  def read_config
+    config = YAML.load_file(
+      File.expand_path("../../config.yaml", __FILE__))
+    @path = config["exmerge_log_path"]
+  end
+
+end
